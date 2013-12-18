@@ -338,7 +338,7 @@ public class SplitInput extends AbstractJob {
       testSplitSize = this.testRandomSelectionSize;
 
       if (testRandomSelectionPct > 0) {
-        testSplitSize = Math.round(lineCount * testRandomSelectionPct / 100.0f);
+        testSplitSize = Math.round(lineCount * (testRandomSelectionPct / 100.0f));
       }
       log.info("{} test split size is {} based on random selection percentage {}",
                inputFile.getName(), testSplitSize, testRandomSelectionPct);
@@ -350,7 +350,7 @@ public class SplitInput extends AbstractJob {
       }
     } else {
       if (testSplitPct > 0) { // calculate split size based on percentage
-        testSplitSize = Math.round(lineCount * testSplitPct / 100.0f);
+        testSplitSize = Math.round(lineCount * (testSplitPct / 100.0f));
         log.info("{} test split size is {} based on percentage {}",
                  inputFile.getName(), testSplitSize, testSplitPct);
       } else {
@@ -358,7 +358,7 @@ public class SplitInput extends AbstractJob {
       }
 
       if (splitLocation > 0) { // calculate start of split based on percentage
-        testSplitStart = Math.round(lineCount * splitLocation / 100.0f);
+        testSplitStart = Math.round(lineCount * (splitLocation / 100.0f));
         if (lineCount - testSplitStart < testSplitSize) {
           // adjust split start downwards based on split size.
           testSplitStart = lineCount - testSplitSize;
